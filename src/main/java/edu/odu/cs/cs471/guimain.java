@@ -1,4 +1,4 @@
-package edu.odu.cs.cs417;
+package edu.odu.cs.cs471;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;

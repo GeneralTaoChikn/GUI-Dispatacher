@@ -1,6 +1,10 @@
-package edu.odu.cs.cs417;
+package edu.odu.cs.cs471;
 
 import java.awt.EventQueue;
+
+import javafx.util.Pair;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -48,13 +52,14 @@ public class SwingGui {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		randomNumGen a = new randomNumGen();
+		
 		/**
 		 * Used to input into JLists
 		 */
-		DefaultListModel <String> ready = new DefaultListModel<String>();
-		DefaultListModel <String> run = new DefaultListModel<String>();
-		DefaultListModel <String> blocked = new DefaultListModel<String>();
-		
+		DefaultListModel <Pair<Integer, String>> ready = new DefaultListModel<Pair<Integer, String>>();
+		DefaultListModel <Pair<Integer, String>> run = new DefaultListModel<Pair<Integer, String>>();
+		DefaultListModel <Pair<Integer, String>> blocked = new DefaultListModel<Pair<Integer, String>>();		
 		
 		/**
 		 * JLabels
@@ -74,15 +79,15 @@ public class SwingGui {
 		/**
 		 * JLists
 		 */
-		JList <String> ReadyQ = new JList <String>(ready);
+		JList <Pair<Integer, String>> ReadyQ = new JList <Pair<Integer, String>>(ready);
 		ReadyQ.setBounds(39, 43, 243, 157);
 		frame.getContentPane().add(ReadyQ);
 		
-		JList <String> Running = new JList <String>(run);
+		JList <Pair<Integer, String>> Running = new JList <Pair<Integer, String>>(run);
 		Running.setBounds(355, 43, 243, 157);
 		frame.getContentPane().add(Running);
 		
-		JList <String> Blocked = new JList <String>(blocked);
+		JList <Pair<Integer, String>> Blocked = new JList <Pair<Integer, String>>(blocked);
 		Blocked.setBounds(39, 247, 243, 157);
 		frame.getContentPane().add(Blocked);
 		
@@ -96,15 +101,18 @@ public class SwingGui {
 	
 		
 		/**
-		 * Add  Process Button
+		 * Add Process Button
 		 */
 		JButton AddProcess = new JButton("Add Process");
 		AddProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String process = textField.getText();
-				System.out.println(process);
+				
+
+
+				Pair Process = new Pair<Integer, String>(a.Priority(),textField.getText());
 				//TODO add to ReadyQueue
-				ready.addElement(process);
+				ready.addElement(Process);
+				a.bubbleSort(ready);
 				
 				textField.setText("");
 			}
@@ -120,12 +128,17 @@ public class SwingGui {
 		btnTimeSlice.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!run.isEmpty()) {
-					String swap1 = run.firstElement();
+					Pair Process1 = new Pair<Integer, String>
+						(run.firstElement().getKey(), run.firstElement().getValue());
 					run.clear();
-					String swap2 = ready.firstElement();
+					
+					Pair Process2 = new Pair<Integer, String>
+						(ready.firstElement().getKey(), ready.firstElement().getValue());
+
 					ready.remove(0);
-					ready.addElement(swap1);
-					run.addElement(swap2);
+					ready.addElement(Process1);
+					run.addElement(Process2);
+					a.bubbleSort(ready);
 				}
 			}
 		});
@@ -152,8 +165,10 @@ public class SwingGui {
 		JButton btnBlock = new JButton("Block");
 		btnBlock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String toBlock = run.firstElement();
-				blocked.addElement(toBlock);
+				Pair Process = new Pair<Integer, String>
+				(run.firstElement().getKey(), run.firstElement().getValue());
+
+				blocked.addElement(Process);
 				run.clear();
 				
 			}
@@ -169,8 +184,12 @@ public class SwingGui {
 		btnRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (run.isEmpty()) {
-					String toRun = ready.firstElement();
-					run.addElement(toRun);
+					
+					Pair Process = new Pair<Integer, String>
+						(ready.firstElement().getKey(), ready.firstElement().getValue());
+					
+
+					run.addElement(Process);
 					ready.remove(0);
 				}
 			}
@@ -185,14 +204,18 @@ public class SwingGui {
 		JButton btnReady = new JButton("Ready");
 		btnReady.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String isReady = blocked.firstElement();
-				ready.addElement(isReady);
+				
+				Pair Process = new Pair<Integer, String>
+					(blocked.firstElement().getKey(), blocked.firstElement().getValue());
+				
+				ready.addElement(Process);
 				blocked.remove(0);
+				a.bubbleSort(ready);
 			}
 		});
 		btnReady.setBounds(579, 247, 125, 39);
 		frame.getContentPane().add(btnReady);
 		
-
 	}//end initialize()
+	
 }
