@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JLabel;
@@ -48,6 +49,13 @@ public class SwingGui {
 		frame.getContentPane().setLayout(null);
 		
 		/**
+		 * Used to input into JLists
+		 */
+		DefaultListModel <String> ready = new DefaultListModel<String>();
+		DefaultListModel <String> run = new DefaultListModel<String>();
+		DefaultListModel <String> blocked = new DefaultListModel<String>();
+		
+		/**
 		 * JLabels
 		 */
 		JLabel lblReadyQueue = new JLabel("Ready Queue");
@@ -65,15 +73,15 @@ public class SwingGui {
 		/**
 		 * JLists
 		 */
-		JList <String> ReadyQ = new JList <String>();
+		JList <String> ReadyQ = new JList <String>(ready);
 		ReadyQ.setBounds(39, 43, 243, 157);
 		frame.getContentPane().add(ReadyQ);
 		
-		JList <String> Running = new JList <String>();
+		JList <String> Running = new JList <String>(run);
 		Running.setBounds(355, 43, 243, 157);
 		frame.getContentPane().add(Running);
 		
-		JList <String> Blocked = new JList <String>();
+		JList <String> Blocked = new JList <String>(blocked);
 		Blocked.setBounds(39, 247, 243, 157);
 		frame.getContentPane().add(Blocked);
 		
@@ -87,16 +95,17 @@ public class SwingGui {
 	
 		
 		/**
-		 * Add  Process
+		 * Add  Process Button
 		 */
 		JButton AddProcess = new JButton("Add Process");
 		AddProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String process = textField.getText();
 				System.out.println(process);
-				textField.setText("");
-
+				//TODO add to ReadyQueue
+				ready.addElement(process);
 				
+				textField.setText("");
 			}
 		});
 		AddProcess.setBounds(205, 477, 125, 43);
@@ -104,44 +113,85 @@ public class SwingGui {
 		
 		
 		/**
-		 * Time Slice
+		 * Time Slice Button
 		 */
 		JButton btnTimeSlice = new JButton("TimeSlice");
+		btnTimeSlice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!run.isEmpty()) {
+					String swap1 = run.firstElement();
+					run.clear();
+					String swap2 = ready.firstElement();
+					ready.remove(0);
+					ready.addElement(swap1);
+					run.addElement(swap2);
+				}
+			}
+		});
 		btnTimeSlice.setBounds(579, 479, 125, 39);
 		frame.getContentPane().add(btnTimeSlice);
 		
 		
 		/**
-		 * Terminate
+		 * Terminate Button
 		 */
 		JButton btnTerminate = new JButton("Terminate");
+		btnTerminate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				blocked.remove(0);// remove first element in readylist
+			}
+		});
 		btnTerminate.setBounds(579, 416, 125, 39);
 		frame.getContentPane().add(btnTerminate);
 		
 		
 		/**
-		 * Block
+		 * Block Button
 		 */
 		JButton btnBlock = new JButton("Block");
+		btnBlock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String toBlock = run.firstElement();
+				blocked.addElement(toBlock);
+				run.clear();
+				
+			}
+		});
 		btnBlock.setBounds(579, 362, 125, 39);
 		frame.getContentPane().add(btnBlock);
 		
 		
 		/**
-		 * Run
+		 * Run Button
 		 */
 		JButton btnRun = new JButton("Run");
+		btnRun.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (run.isEmpty()) {
+					String toRun = ready.firstElement();
+					run.addElement(toRun);
+					ready.remove(0);
+				}
+			}
+		});
 		btnRun.setBounds(579, 304, 125, 39);
 		frame.getContentPane().add(btnRun);
 		
 		
 		/**
-		 * Ready
+		 * Ready Button
 		 */
 		JButton btnReady = new JButton("Ready");
+		btnReady.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String isReady = blocked.firstElement();
+				ready.addElement(isReady);
+				blocked.remove(0);
+			}
+		});
 		btnReady.setBounds(579, 247, 125, 39);
 		frame.getContentPane().add(btnReady);
 		
 
-	}
+	}//end initialize()
 }
