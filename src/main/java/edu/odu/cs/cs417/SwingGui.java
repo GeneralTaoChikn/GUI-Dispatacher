@@ -14,6 +14,7 @@ public class SwingGui {
 
 	private JFrame frame;
 	private JTextField textField;
+	private DefaulListModel Ready;
 
 	/**
 	 * Launch the application.
@@ -86,7 +87,9 @@ public class SwingGui {
 		textField.setColumns(10);
 	
 		
-		
+		/**
+		 * Add  Process
+		 */
 		JButton AddProcess = new JButton("Add Process");
 		AddProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -98,22 +101,42 @@ public class SwingGui {
 		AddProcess.setBounds(205, 477, 125, 43);
 		frame.getContentPane().add(AddProcess);
 		
+		
+		/**
+		 * Time Slice
+		 */
 		JButton btnTimeSlice = new JButton("TimeSlice");
 		btnTimeSlice.setBounds(579, 479, 125, 39);
 		frame.getContentPane().add(btnTimeSlice);
 		
+		
+		/**
+		 * Terminate
+		 */
 		JButton btnTerminate = new JButton("Terminate");
 		btnTerminate.setBounds(579, 416, 125, 39);
 		frame.getContentPane().add(btnTerminate);
 		
+		
+		/**
+		 * Block
+		 */
 		JButton btnBlock = new JButton("Block");
 		btnBlock.setBounds(579, 362, 125, 39);
 		frame.getContentPane().add(btnBlock);
 		
+		
+		/**
+		 * Run
+		 */
 		JButton btnRun = new JButton("Run");
 		btnRun.setBounds(579, 304, 125, 39);
 		frame.getContentPane().add(btnRun);
 		
+		
+		/**
+		 * Ready
+		 */
 		JButton btnReady = new JButton("Ready");
 		btnReady.setBounds(579, 247, 125, 39);
 		frame.getContentPane().add(btnReady);
