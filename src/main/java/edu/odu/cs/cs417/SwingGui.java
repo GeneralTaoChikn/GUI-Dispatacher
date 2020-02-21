@@ -14,7 +14,6 @@ public class SwingGui {
 
 	private JFrame frame;
 	private JTextField textField;
-	private DefaulListModel Ready;
 
 	/**
 	 * Launch the application.
@@ -94,7 +93,9 @@ public class SwingGui {
 		AddProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String process = textField.getText();
-				ReadyQ(process);
+				System.out.println(process);
+				textField.setText("");
+
 				
 			}
 		});
