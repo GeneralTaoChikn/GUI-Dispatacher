@@ -29,7 +29,7 @@ public class randomNumGen {
         return rand_int;
     } 
     
-	//Sort List based on Priority
+	//BubbleSort List based on Priority
 	public void bubbleSort(DefaultListModel<Pair<Integer, String>> Sort) {
 		
 		int n = Sort.getSize(); 
