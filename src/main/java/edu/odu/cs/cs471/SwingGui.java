@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 
 public class SwingGui {
 
-	private JFrame frame;
+	private JFrame frmGuiDispatcher;
 	private JTextField textField;
 
 	/**
@@ -28,7 +28,7 @@ public class SwingGui {
 			public void run() {
 				try {
 					SwingGui window = new SwingGui();
-					window.frame.setVisible(true);
+					window.frmGuiDispatcher.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,10 +47,11 @@ public class SwingGui {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmGuiDispatcher = new JFrame();
+		frmGuiDispatcher.setTitle("Gui Dispatcher");
+		frmGuiDispatcher.setBounds(100, 100, 750, 600);
+		frmGuiDispatcher.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmGuiDispatcher.getContentPane().setLayout(null);
 		
 		randomNumGen a = new randomNumGen();
 		
@@ -66,37 +67,37 @@ public class SwingGui {
 		 */
 		JLabel lblReadyQueue = new JLabel("Ready Queue");
 		lblReadyQueue.setBounds(38, 24, 102, 16);
-		frame.getContentPane().add(lblReadyQueue);
+		frmGuiDispatcher.getContentPane().add(lblReadyQueue);
 		
 		JLabel lblRunning = new JLabel("Running");
 		lblRunning.setBounds(355, 24, 56, 16);
-		frame.getContentPane().add(lblRunning);
+		frmGuiDispatcher.getContentPane().add(lblRunning);
 		
 		JLabel lblBlocked = new JLabel("Blocked");
 		lblBlocked.setBounds(49, 223, 56, 16);
-		frame.getContentPane().add(lblBlocked);
+		frmGuiDispatcher.getContentPane().add(lblBlocked);
 		
 		/**
 		 * JLists
 		 */
 		JList <Pair<Integer, String>> ReadyQ = new JList <Pair<Integer, String>>(ready);
 		ReadyQ.setBounds(39, 43, 243, 157);
-		frame.getContentPane().add(ReadyQ);
+		frmGuiDispatcher.getContentPane().add(ReadyQ);
 		
 		JList <Pair<Integer, String>> Running = new JList <Pair<Integer, String>>(run);
 		Running.setBounds(355, 43, 243, 157);
-		frame.getContentPane().add(Running);
+		frmGuiDispatcher.getContentPane().add(Running);
 		
 		JList <Pair<Integer, String>> Blocked = new JList <Pair<Integer, String>>(blocked);
 		Blocked.setBounds(39, 247, 243, 157);
-		frame.getContentPane().add(Blocked);
+		frmGuiDispatcher.getContentPane().add(Blocked);
 		
 		/**
 		 * textfield
 		 */
 		textField = new JTextField();
 		textField.setBounds(38, 477, 142, 43);
-		frame.getContentPane().add(textField);
+		frmGuiDispatcher.getContentPane().add(textField);
 		textField.setColumns(10);
 	
 		
@@ -118,7 +119,7 @@ public class SwingGui {
 			}
 		});
 		AddProcess.setBounds(205, 477, 125, 43);
-		frame.getContentPane().add(AddProcess);
+		frmGuiDispatcher.getContentPane().add(AddProcess);
 		
 		
 		/**
@@ -143,7 +144,7 @@ public class SwingGui {
 			}
 		});
 		btnTimeSlice.setBounds(579, 479, 125, 39);
-		frame.getContentPane().add(btnTimeSlice);
+		frmGuiDispatcher.getContentPane().add(btnTimeSlice);
 		
 		
 		/**
@@ -156,7 +157,7 @@ public class SwingGui {
 			}
 		});
 		btnTerminate.setBounds(579, 416, 125, 39);
-		frame.getContentPane().add(btnTerminate);
+		frmGuiDispatcher.getContentPane().add(btnTerminate);
 		
 		
 		/**
@@ -174,7 +175,7 @@ public class SwingGui {
 			}
 		});
 		btnBlock.setBounds(579, 362, 125, 39);
-		frame.getContentPane().add(btnBlock);
+		frmGuiDispatcher.getContentPane().add(btnBlock);
 		
 		
 		/**
@@ -195,7 +196,7 @@ public class SwingGui {
 			}
 		});
 		btnRun.setBounds(579, 304, 125, 39);
-		frame.getContentPane().add(btnRun);
+		frmGuiDispatcher.getContentPane().add(btnRun);
 		
 		
 		/**
@@ -214,11 +215,11 @@ public class SwingGui {
 			}
 		});
 		btnReady.setBounds(579, 247, 125, 39);
-		frame.getContentPane().add(btnReady);
+		frmGuiDispatcher.getContentPane().add(btnReady);
 		
 		JLabel lblNewLabel = new JLabel("Priority = Process");
 		lblNewLabel.setBounds(355, 272, 125, 83);
-		frame.getContentPane().add(lblNewLabel);
+		frmGuiDispatcher.getContentPane().add(lblNewLabel);
 		
 	}//end initialize()
 }
