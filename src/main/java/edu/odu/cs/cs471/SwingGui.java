@@ -14,6 +14,9 @@ import javax.swing.JList;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.border.CompoundBorder;
+import java.awt.Color;
 
 public class SwingGui {
 
@@ -66,29 +69,38 @@ public class SwingGui {
 		 * JLabels
 		 */
 		JLabel lblReadyQueue = new JLabel("Ready Queue");
-		lblReadyQueue.setBounds(38, 24, 102, 16);
+		lblReadyQueue.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblReadyQueue.setBounds(38, 24, 117, 16);
 		frmGuiDispatcher.getContentPane().add(lblReadyQueue);
 		
-		JLabel lblRunning = new JLabel("Running");
-		lblRunning.setBounds(355, 24, 56, 16);
+		JLabel lblRunning = new JLabel("Running Processes");
+		lblRunning.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblRunning.setBounds(355, 24, 155, 16);
 		frmGuiDispatcher.getContentPane().add(lblRunning);
 		
-		JLabel lblBlocked = new JLabel("Blocked");
-		lblBlocked.setBounds(49, 223, 56, 16);
+		JLabel lblBlocked = new JLabel("Processes Blocked");
+		lblBlocked.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblBlocked.setBounds(38, 223, 155, 16);
 		frmGuiDispatcher.getContentPane().add(lblBlocked);
 		
 		/**
 		 * JLists
 		 */
 		JList <Pair<Integer, String>> ReadyQ = new JList <Pair<Integer, String>>(ready);
+		ReadyQ.setBackground(Color.BLACK);
+		ReadyQ.setForeground(Color.GREEN);
 		ReadyQ.setBounds(39, 43, 243, 157);
 		frmGuiDispatcher.getContentPane().add(ReadyQ);
 		
 		JList <Pair<Integer, String>> Running = new JList <Pair<Integer, String>>(run);
-		Running.setBounds(355, 43, 243, 157);
+		Running.setBackground(Color.BLACK);
+		Running.setForeground(Color.GREEN);
+		Running.setBounds(330, 43, 243, 157);
 		frmGuiDispatcher.getContentPane().add(Running);
 		
 		JList <Pair<Integer, String>> Blocked = new JList <Pair<Integer, String>>(blocked);
+		Blocked.setBackground(Color.BLACK);
+		Blocked.setForeground(Color.GREEN);
 		Blocked.setBounds(39, 247, 243, 157);
 		frmGuiDispatcher.getContentPane().add(Blocked);
 		
@@ -216,10 +228,6 @@ public class SwingGui {
 		});
 		btnReady.setBounds(579, 247, 125, 39);
 		frmGuiDispatcher.getContentPane().add(btnReady);
-		
-		JLabel lblNewLabel = new JLabel("Priority = Process");
-		lblNewLabel.setBounds(355, 272, 125, 83);
-		frmGuiDispatcher.getContentPane().add(lblNewLabel);
 		
 	}//end initialize()
 }
