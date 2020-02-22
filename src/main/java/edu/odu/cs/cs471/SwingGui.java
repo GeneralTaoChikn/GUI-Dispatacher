@@ -216,6 +216,9 @@ public class SwingGui {
 		btnReady.setBounds(579, 247, 125, 39);
 		frame.getContentPane().add(btnReady);
 		
+		JLabel lblNewLabel = new JLabel("Priority = Process");
+		lblNewLabel.setBounds(355, 272, 125, 83);
+		frame.getContentPane().add(lblNewLabel);
+		
 	}//end initialize()
-	
 }
