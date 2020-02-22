@@ -54,7 +54,7 @@ public class randomNumGen {
     }
     
 	/**
-	 * BubbleSort a list
+	 * BubbleSort a list of pairs
 	 * @param Sort
 	 */
 	public void bubbleSort(DefaultListModel<Pair<Integer, String>> Sort) {

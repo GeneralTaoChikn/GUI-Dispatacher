@@ -247,6 +247,9 @@ public class SwingGui {
 		lblTerminatedProcesses.setBounds(306, 224, 191, 16);
 		frmGuiDispatcher.getContentPane().add(lblTerminatedProcesses);
 		
+		/**
+		 * Pre-Populate button
+		 */
 		JButton btnPrepopulate = new JButton("Pre-Populate");
 		btnPrepopulate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
