@@ -250,10 +250,10 @@ public class SwingGui {
 		JButton btnPrepopulate = new JButton("Pre-Populate");
 		btnPrepopulate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ready = a.prePopulate();
+				a.prePopulate(ready);
 			}
 		});
-		btnPrepopulate.setFont(new Font("Tahoma", Font.BOLD, 7));
+		btnPrepopulate.setFont(new Font("Tahoma", Font.PLAIN, 7));
 		btnPrepopulate.setBounds(205, 31, 77, 9);
 		frmGuiDispatcher.getContentPane().add(btnPrepopulate);
 		

@@ -32,10 +32,9 @@ public class randomNumGen {
      * Used to Prepopulate processes
      * @return pre
      */
-    public DefaultListModel<Pair<Integer, String>> prePopulate (){
+    public void prePopulate (DefaultListModel<Pair<Integer, String>> pre){
     	
-    	DefaultListModel<Pair<Integer, String>> pre  = 
-    			new DefaultListModel<Pair<Integer, String>> ();
+
     	//Prepopulate
     	Pair<Integer, String> p1 = new Pair 
     			<Integer, String> (this.Priority(),"Chrome.exe");
@@ -52,8 +51,6 @@ public class randomNumGen {
     	pre.addElement(p1);pre.addElement(p2);pre.addElement(p3);
     	pre.addElement(p4);pre.addElement(p5);pre.addElement(p6);
     	
-    	
-    	return pre;
     }
     
 	/**
