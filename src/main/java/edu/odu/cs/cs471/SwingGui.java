@@ -17,6 +17,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.border.CompoundBorder;
 import java.awt.Color;
+import javax.swing.ListModel;
+import javax.swing.UIManager;
 
 public class SwingGui {
 
@@ -63,7 +65,8 @@ public class SwingGui {
 		 */
 		DefaultListModel <Pair<Integer, String>> ready = new DefaultListModel<Pair<Integer, String>>();
 		DefaultListModel <Pair<Integer, String>> run = new DefaultListModel<Pair<Integer, String>>();
-		DefaultListModel <Pair<Integer, String>> blocked = new DefaultListModel<Pair<Integer, String>>();		
+		DefaultListModel <Pair<Integer, String>> blocked = new DefaultListModel<Pair<Integer, String>>();
+		DefaultListModel <Pair<Integer, String>> terminated = new DefaultListModel<Pair<Integer, String>>();
 		
 		/**
 		 * JLabels
@@ -75,7 +78,7 @@ public class SwingGui {
 		
 		JLabel lblRunning = new JLabel("Running Processes");
 		lblRunning.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblRunning.setBounds(355, 24, 155, 16);
+		lblRunning.setBounds(306, 24, 155, 16);
 		frmGuiDispatcher.getContentPane().add(lblRunning);
 		
 		JLabel lblBlocked = new JLabel("Processes Blocked");
@@ -88,21 +91,27 @@ public class SwingGui {
 		 */
 		JList <Pair<Integer, String>> ReadyQ = new JList <Pair<Integer, String>>(ready);
 		ReadyQ.setBackground(Color.BLACK);
-		ReadyQ.setForeground(Color.GREEN);
+		ReadyQ.setForeground(new Color(50, 205, 50));
 		ReadyQ.setBounds(39, 43, 243, 157);
 		frmGuiDispatcher.getContentPane().add(ReadyQ);
 		
 		JList <Pair<Integer, String>> Running = new JList <Pair<Integer, String>>(run);
 		Running.setBackground(Color.BLACK);
-		Running.setForeground(Color.GREEN);
-		Running.setBounds(330, 43, 243, 157);
+		Running.setForeground(new Color(50, 205, 50));
+		Running.setBounds(306, 43, 243, 157);
 		frmGuiDispatcher.getContentPane().add(Running);
 		
 		JList <Pair<Integer, String>> Blocked = new JList <Pair<Integer, String>>(blocked);
 		Blocked.setBackground(Color.BLACK);
-		Blocked.setForeground(Color.GREEN);
+		Blocked.setForeground(new Color(50, 205, 50));
 		Blocked.setBounds(39, 247, 243, 157);
 		frmGuiDispatcher.getContentPane().add(Blocked);
+		
+		JList<Pair<Integer, String>> Terminated = new JList<Pair<Integer, String>>(terminated);
+		Terminated.setForeground(new Color(50, 205, 50));
+		Terminated.setBackground(Color.BLACK);
+		Terminated.setBounds(306, 247, 243, 157);
+		frmGuiDispatcher.getContentPane().add(Terminated);
 		
 		/**
 		 * textfield
@@ -130,7 +139,7 @@ public class SwingGui {
 				textField.setText("");
 			}
 		});
-		AddProcess.setBounds(205, 477, 125, 43);
+		AddProcess.setBounds(219, 477, 125, 43);
 		frmGuiDispatcher.getContentPane().add(AddProcess);
 		
 		
@@ -163,8 +172,10 @@ public class SwingGui {
 		 * Terminate Button
 		 */
 		JButton btnTerminate = new JButton("Terminate");
+		btnTerminate.setBackground(new Color(178, 34, 34));
 		btnTerminate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				terminated.addElement(blocked.firstElement());
 				blocked.remove(0);// remove first element in readylist
 			}
 		});
@@ -176,6 +187,7 @@ public class SwingGui {
 		 * Block Button
 		 */
 		JButton btnBlock = new JButton("Block");
+		btnBlock.setBackground(new Color(255, 255, 0));
 		btnBlock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pair Process = new Pair<Integer, String>
@@ -194,6 +206,7 @@ public class SwingGui {
 		 * Run Button
 		 */
 		JButton btnRun = new JButton("Run");
+		btnRun.setBackground(new Color(34, 139, 34));
 		btnRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (run.isEmpty()) {
@@ -228,6 +241,12 @@ public class SwingGui {
 		});
 		btnReady.setBounds(579, 247, 125, 39);
 		frmGuiDispatcher.getContentPane().add(btnReady);
+		
+		JLabel lblTerminatedProcesses = new JLabel("Terminated Processes");
+		lblTerminatedProcesses.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblTerminatedProcesses.setBounds(306, 224, 191, 16);
+		frmGuiDispatcher.getContentPane().add(lblTerminatedProcesses);
+		
 		
 	}//end initialize()
 }
