@@ -54,7 +54,7 @@ public class SwingGui {
 	private void initialize() {
 		frmGuiDispatcher = new JFrame();
 		frmGuiDispatcher.setTitle("Gui Dispatcher");
-		frmGuiDispatcher.setBounds(100, 100, 750, 600);
+		frmGuiDispatcher.setBounds(100, 100, 1100, 600);
 		frmGuiDispatcher.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGuiDispatcher.getContentPane().setLayout(null);
 		
@@ -78,12 +78,12 @@ public class SwingGui {
 		
 		JLabel lblRunning = new JLabel("Running Processes");
 		lblRunning.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblRunning.setBounds(306, 24, 155, 16);
+		lblRunning.setBounds(294, 24, 155, 16);
 		frmGuiDispatcher.getContentPane().add(lblRunning);
 		
 		JLabel lblBlocked = new JLabel("Processes Blocked");
 		lblBlocked.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblBlocked.setBounds(38, 223, 155, 16);
+		lblBlocked.setBounds(566, 24, 155, 16);
 		frmGuiDispatcher.getContentPane().add(lblBlocked);
 		
 		/**
@@ -92,25 +92,25 @@ public class SwingGui {
 		JList <Pair<Integer, String>> ReadyQ = new JList <Pair<Integer, String>>(ready);
 		ReadyQ.setBackground(Color.BLACK);
 		ReadyQ.setForeground(new Color(50, 205, 50));
-		ReadyQ.setBounds(39, 43, 243, 157);
+		ReadyQ.setBounds(39, 43, 243, 370);
 		frmGuiDispatcher.getContentPane().add(ReadyQ);
 		
 		JList <Pair<Integer, String>> Running = new JList <Pair<Integer, String>>(run);
 		Running.setBackground(Color.BLACK);
 		Running.setForeground(new Color(50, 205, 50));
-		Running.setBounds(306, 43, 243, 157);
+		Running.setBounds(294, 43, 253, 370);
 		frmGuiDispatcher.getContentPane().add(Running);
 		
 		JList <Pair<Integer, String>> Blocked = new JList <Pair<Integer, String>>(blocked);
 		Blocked.setBackground(Color.BLACK);
 		Blocked.setForeground(new Color(50, 205, 50));
-		Blocked.setBounds(39, 247, 243, 157);
+		Blocked.setBounds(559, 43, 243, 370);
 		frmGuiDispatcher.getContentPane().add(Blocked);
 		
 		JList<Pair<Integer, String>> Terminated = new JList<Pair<Integer, String>>(terminated);
 		Terminated.setForeground(new Color(50, 205, 50));
 		Terminated.setBackground(Color.BLACK);
-		Terminated.setBounds(306, 247, 243, 157);
+		Terminated.setBounds(814, 43, 243, 370);
 		frmGuiDispatcher.getContentPane().add(Terminated);
 		
 		/**
@@ -164,7 +164,7 @@ public class SwingGui {
 				}
 			}
 		});
-		btnTimeSlice.setBounds(579, 479, 125, 39);
+		btnTimeSlice.setBounds(932, 479, 125, 39);
 		frmGuiDispatcher.getContentPane().add(btnTimeSlice);
 		
 		
@@ -179,7 +179,7 @@ public class SwingGui {
 				blocked.remove(0);// remove first element in readylist
 			}
 		});
-		btnTerminate.setBounds(579, 416, 125, 39);
+		btnTerminate.setBounds(795, 479, 125, 39);
 		frmGuiDispatcher.getContentPane().add(btnTerminate);
 		
 		
@@ -198,7 +198,7 @@ public class SwingGui {
 				
 			}
 		});
-		btnBlock.setBounds(579, 362, 125, 39);
+		btnBlock.setBounds(658, 479, 125, 39);
 		frmGuiDispatcher.getContentPane().add(btnBlock);
 		
 		
@@ -220,7 +220,7 @@ public class SwingGui {
 				}
 			}
 		});
-		btnRun.setBounds(579, 304, 125, 39);
+		btnRun.setBounds(521, 479, 125, 39);
 		frmGuiDispatcher.getContentPane().add(btnRun);
 		
 		
@@ -239,12 +239,12 @@ public class SwingGui {
 				a.bubbleSort(ready);
 			}
 		});
-		btnReady.setBounds(579, 247, 125, 39);
+		btnReady.setBounds(384, 479, 125, 39);
 		frmGuiDispatcher.getContentPane().add(btnReady);
 		
 		JLabel lblTerminatedProcesses = new JLabel("Terminated Processes");
 		lblTerminatedProcesses.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblTerminatedProcesses.setBounds(306, 224, 191, 16);
+		lblTerminatedProcesses.setBounds(814, 24, 191, 16);
 		frmGuiDispatcher.getContentPane().add(lblTerminatedProcesses);
 		
 		/**
