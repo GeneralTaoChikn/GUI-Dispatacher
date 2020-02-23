@@ -19,9 +19,9 @@ public class randomNumGen {
         Random rand = new Random(); 
         int rand_int;
   
-        // Generate random integers in range 0 to 999 
+        // Generate random integers in range 0 to 5 
         do {
-        	rand_int = rand.nextInt(1000) % 10; 
+        	rand_int = rand.nextInt(1000) % 5; 
         }while (rand_int == 0);
  
   
@@ -50,6 +50,7 @@ public class randomNumGen {
     			<Integer, String> (this.Priority(),"Smalltalk.dl");
     	pre.addElement(p1);pre.addElement(p2);pre.addElement(p3);
     	pre.addElement(p4);pre.addElement(p5);pre.addElement(p6);
+    	this.bubbleSort(pre);
     	
     }
     
