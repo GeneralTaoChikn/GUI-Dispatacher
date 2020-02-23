@@ -50,7 +50,7 @@ public class randomNumGen {
     			<Integer, String> (this.Priority(),"Smalltalk.dl");
     	pre.addElement(p1);pre.addElement(p2);pre.addElement(p3);
     	pre.addElement(p4);pre.addElement(p5);pre.addElement(p6);
-    	this.bubbleSort(pre);
+    	this.bubbleSort(pre); 
     	
     }
     
