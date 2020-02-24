@@ -3,8 +3,7 @@ package edu.odu.cs.cs471;
 import java.awt.EventQueue;
 
 import javafx.util.Pair;
-import java.util.ArrayList;
-import java.util.Collections;
+
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -15,10 +14,8 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import javax.swing.border.CompoundBorder;
 import java.awt.Color;
-import javax.swing.ListModel;
-import javax.swing.UIManager;
+
 
 public class SwingGui {
 
@@ -61,7 +58,7 @@ public class SwingGui {
 		randomNumGen a = new randomNumGen();
 		
 		/**
-		 * Used to input into JLists
+		 * DefaultListModels input into JLists
 		 */
 		DefaultListModel <Pair<Integer, String>> ready = new DefaultListModel<Pair<Integer, String>>();
 		DefaultListModel <Pair<Integer, String>> run = new DefaultListModel<Pair<Integer, String>>();
@@ -132,7 +129,7 @@ public class SwingGui {
 
 
 				Pair Process = new Pair<Integer, String>(a.Priority(),textField.getText());
-				//TODO add to ReadyQueue
+
 				ready.addElement(Process);
 				a.bubbleSort(ready);
 				
