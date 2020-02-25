@@ -126,14 +126,14 @@ public class SwingGui {
 		AddProcess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-
-
+				if (!textField.getText().equals("")) {
 				Pair Process = new Pair<Integer, String>(a.Priority(),textField.getText());
 
 				ready.addElement(Process);
 				a.bubbleSort(ready);
 				
 				textField.setText("");
+				}
 			}
 		});
 		AddProcess.setBounds(219, 477, 125, 43);
