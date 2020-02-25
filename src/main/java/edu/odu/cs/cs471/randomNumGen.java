@@ -17,15 +17,12 @@ public class randomNumGen {
     { 
         // create instance of Random class 
         Random rand = new Random(); 
-        int rand_int;
-  
+        int rand_int; 
         // Generate random integers in range 0 to 5 
         do {
         	rand_int = rand.nextInt(1000) % 5; 
         }while (rand_int == 0);
  
-  
-
         return rand_int;
     } 
     /**
@@ -66,12 +63,9 @@ public class randomNumGen {
                 if (Sort.get(j).getKey() < Sort.get(j+1).getKey())         	
 
                 {
-
                 	Pair<Integer, String> temp = Sort.get(j);             	
                 	Sort.set(j, Sort.get(j+1));
                 	Sort.set(j+1, temp);
-
-
                 }//end if 
 		
 		
