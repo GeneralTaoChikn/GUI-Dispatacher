@@ -257,6 +257,26 @@ public class SwingGui {
 		btnPrepopulate.setBounds(205, 31, 77, 9);
 		frmGuiDispatcher.getContentPane().add(btnPrepopulate);
 		
+		JLabel lblHowToRead = new JLabel("How to read priority");
+		lblHowToRead.setBounds(54, 426, 111, 14);
+		frmGuiDispatcher.getContentPane().add(lblHowToRead);
+		
+		JLabel lblPriorityProcess = new JLabel("Priority  = Process");
+		lblPriorityProcess.setBounds(54, 439, 111, 14);
+		frmGuiDispatcher.getContentPane().add(lblPriorityProcess);
+		
+		JLabel lblPriorityScale = new JLabel("Priority Scale 1-4");
+		lblPriorityScale.setBounds(198, 424, 97, 14);
+		frmGuiDispatcher.getContentPane().add(lblPriorityScale);
+		
+		JLabel lblBeingHighest = new JLabel("4 being highest");
+		lblBeingHighest.setBounds(197, 439, 98, 14);
+		frmGuiDispatcher.getContentPane().add(lblBeingHighest);
+		
+		JLabel lblLowest = new JLabel("1 being lowest");
+		lblLowest.setBounds(196, 452, 86, 14);
+		frmGuiDispatcher.getContentPane().add(lblLowest);
+		
 		
 	}//end initialize()
 }
